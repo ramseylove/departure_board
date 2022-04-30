@@ -83,7 +83,7 @@
     "method": "GET",
     "sortNum": 0,
     "created": "2022-04-29T21:17:39.586Z",
-    "modified": "2022-04-29T23:22:41.333Z",
+    "modified": "2022-04-30T03:23:49.821Z",
     "headers": [],
     "params": [
       {
@@ -109,11 +109,11 @@
     "colId": "history",
     "containerId": "",
     "name": "schedules-times-date-stop",
-    "url": "https://api-v3.mbta.com/schedules?include=stop,route&filter%5Bdate%5D=2022-04-29&filter%5Bdirection_id%5D=0&filter%5Broute_type%5D=2&filter%5Bmin_time%5D=18%3A00&filter%5Bmax_time%5D=19%3A30&filter%5Bstop%5D=place-north&sort=departure_time",
+    "url": "https://api-v3.mbta.com/schedules?include=stop,route&filter%5Bdate%5D=2022-04-30&filter%5Bdirection_id%5D=0&filter%5Broute_type%5D=2&filter%5Bmin_time%5D=18%3A00&filter%5Bmax_time%5D=19%3A30&filter%5Bstop%5D=place-north&sort=departure_time",
     "method": "GET",
     "sortNum": 0,
     "created": "2022-04-29T21:18:56.932Z",
-    "modified": "2022-04-29T23:13:33.126Z",
+    "modified": "2022-04-30T05:08:57.245Z",
     "headers": [],
     "params": [
       {
@@ -123,7 +123,7 @@
       },
       {
         "name": "filter%5Bdate%5D",
-        "value": "2022-04-29",
+        "value": "2022-04-30",
         "isPath": false
       },
       {
@@ -164,11 +164,11 @@
     "colId": "history",
     "containerId": "",
     "name": "stops",
-    "url": "https://api-v3.mbta.com/stops/GB-0296",
+    "url": "https://api-v3.mbta.com/stops/GB-0254",
     "method": "GET",
     "sortNum": 0,
     "created": "2022-04-29T21:33:12.400Z",
-    "modified": "2022-04-29T22:42:18.392Z",
+    "modified": "2022-04-30T04:59:32.596Z",
     "headers": [],
     "params": [],
     "tests": []
@@ -240,11 +240,11 @@
     "colId": "history",
     "containerId": "",
     "name": "schedule-route-id",
-    "url": "https://api-v3.mbta.com/schedules?filter[route]=CR-Newburyport&filter[stop_sequence]=first,last&filter[route_type]=2&filter[min_time]=12:00&filter[max_time]=14:00&filter[direction_id]=0&sort=departure_time",
+    "url": "https://api-v3.mbta.com/schedules?filter[route]=CR-Newburyport&filter[stop_sequence]=last&filter[route_type]=2&filter[min_time]=12:00&filter[max_time]=14:00&filter[direction_id]=0&sort=departure_time",
     "method": "GET",
     "sortNum": 0,
     "created": "2022-04-29T22:39:48.513Z",
-    "modified": "2022-04-29T22:49:35.817Z",
+    "modified": "2022-04-30T04:49:51.129Z",
     "headers": [],
     "params": [
       {
@@ -254,7 +254,7 @@
       },
       {
         "name": "filter[stop_sequence]",
-        "value": "first,last",
+        "value": "last",
         "isPath": false
       },
       {
@@ -290,11 +290,11 @@
     "colId": "history",
     "containerId": "",
     "name": "trips-id",
-    "url": "https://api-v3.mbta.com/trips/CR-A522054-163-MRNewbptSlmRockport0?include=stops",
+    "url": "https://api-v3.mbta.com/trips/CR-A521789-119-MRNewbptSlmRockport?include=stops",
     "method": "GET",
     "sortNum": 0,
     "created": "2022-04-29T23:01:13.591Z",
-    "modified": "2022-04-29T23:06:45.365Z",
+    "modified": "2022-04-30T04:19:53.856Z",
     "headers": [],
     "params": [
       {
