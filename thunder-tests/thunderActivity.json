@@ -1,0 +1,308 @@
+[
+  {
+    "_id": "f863c873-8a17-4972-bce9-61f9dc30355c",
+    "colId": "history",
+    "containerId": "",
+    "name": "routes-stop-placeNorth",
+    "url": "https://api-v3.mbta.com/routes?include=stop&filter%5Bstop%5D=place-north&filter%5Btype%5D=2&filter%5Bdirection_id%5D=0&filter%5Bdate%5D=2022-04-30",
+    "method": "GET",
+    "sortNum": 0,
+    "created": "2022-04-29T20:53:41.010Z",
+    "modified": "2022-04-29T23:07:20.000Z",
+    "headers": [],
+    "params": [
+      {
+        "name": "include",
+        "value": "stop",
+        "isPath": false
+      },
+      {
+        "name": "filter%5Bstop%5D",
+        "value": "place-north",
+        "isPath": false
+      },
+      {
+        "name": "filter%5Btype%5D",
+        "value": "2",
+        "isPath": false
+      },
+      {
+        "name": "filter%5Bdirection_id%5D",
+        "value": "0",
+        "isPath": false
+      },
+      {
+        "name": "filter%5Bdate%5D",
+        "value": "2022-04-30",
+        "isPath": false
+      }
+    ],
+    "tests": []
+  },
+  {
+    "_id": "5edf0346-f1f1-40d3-9225-8250c9452335",
+    "colId": "history",
+    "containerId": "",
+    "name": "predictions-stop-placeNorth",
+    "url": "https://api-v3.mbta.com/predictions?filter%5Bdirection_id%5D=0&include=stop&filter%5Broute_type%5D=2&filter%5Bstop%5D=place-north",
+    "method": "GET",
+    "sortNum": 0,
+    "created": "2022-04-29T20:57:37.523Z",
+    "modified": "2022-04-29T23:06:01.727Z",
+    "headers": [],
+    "params": [
+      {
+        "name": "filter%5Bdirection_id%5D",
+        "value": "0",
+        "isPath": false
+      },
+      {
+        "name": "include",
+        "value": "stop",
+        "isPath": false
+      },
+      {
+        "name": "filter%5Broute_type%5D",
+        "value": "2",
+        "isPath": false
+      },
+      {
+        "name": "filter%5Bstop%5D",
+        "value": "place-north",
+        "isPath": false
+      }
+    ],
+    "tests": []
+  },
+  {
+    "_id": "29cf31e4-78e7-44a2-9b2a-242d961604ab",
+    "colId": "history",
+    "containerId": "",
+    "name": "trips-haverhill",
+    "url": "https://api-v3.mbta.com/trips?include=route%2Cstops%2Cpredictions&filter%5Bid%5D=CR-503480-294&filter[date]=2022-04-29",
+    "method": "GET",
+    "sortNum": 0,
+    "created": "2022-04-29T21:17:39.586Z",
+    "modified": "2022-04-29T23:22:41.333Z",
+    "headers": [],
+    "params": [
+      {
+        "name": "include",
+        "value": "route%2Cstops%2Cpredictions",
+        "isPath": false
+      },
+      {
+        "name": "filter%5Bid%5D",
+        "value": "CR-503480-294",
+        "isPath": false
+      },
+      {
+        "name": "filter[date]",
+        "value": "2022-04-29",
+        "isPath": false
+      }
+    ],
+    "tests": []
+  },
+  {
+    "_id": "ba6ca0a8-80d4-4b08-a83f-980a8d907f1c",
+    "colId": "history",
+    "containerId": "",
+    "name": "schedules-times-date-stop",
+    "url": "https://api-v3.mbta.com/schedules?include=stop,route&filter%5Bdate%5D=2022-04-29&filter%5Bdirection_id%5D=0&filter%5Broute_type%5D=2&filter%5Bmin_time%5D=18%3A00&filter%5Bmax_time%5D=19%3A30&filter%5Bstop%5D=place-north&sort=departure_time",
+    "method": "GET",
+    "sortNum": 0,
+    "created": "2022-04-29T21:18:56.932Z",
+    "modified": "2022-04-29T23:13:33.126Z",
+    "headers": [],
+    "params": [
+      {
+        "name": "include",
+        "value": "stop,route",
+        "isPath": false
+      },
+      {
+        "name": "filter%5Bdate%5D",
+        "value": "2022-04-29",
+        "isPath": false
+      },
+      {
+        "name": "filter%5Bdirection_id%5D",
+        "value": "0",
+        "isPath": false
+      },
+      {
+        "name": "filter%5Broute_type%5D",
+        "value": "2",
+        "isPath": false
+      },
+      {
+        "name": "filter%5Bmin_time%5D",
+        "value": "18%3A00",
+        "isPath": false
+      },
+      {
+        "name": "filter%5Bmax_time%5D",
+        "value": "19%3A30",
+        "isPath": false
+      },
+      {
+        "name": "filter%5Bstop%5D",
+        "value": "place-north",
+        "isPath": false
+      },
+      {
+        "name": "sort",
+        "value": "departure_time",
+        "isPath": false
+      }
+    ],
+    "tests": []
+  },
+  {
+    "_id": "d567dd93-f6a8-41a5-a42d-945b6e578ff4",
+    "colId": "history",
+    "containerId": "",
+    "name": "stops",
+    "url": "https://api-v3.mbta.com/stops/GB-0296",
+    "method": "GET",
+    "sortNum": 0,
+    "created": "2022-04-29T21:33:12.400Z",
+    "modified": "2022-04-29T22:42:18.392Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "02df7bc2-877b-4ed4-82a2-005dfcff3da3",
+    "colId": "history",
+    "containerId": "",
+    "name": "trips-route-trip",
+    "url": "https://api-v3.mbta.com/trips?fields%5Btrip%5D=CR-A521785-109-MRNewbptSlmRockport&include=stops&filter%5Bdate%5D=2022-04-29",
+    "method": "GET",
+    "sortNum": 0,
+    "created": "2022-04-29T21:41:44.079Z",
+    "modified": "2022-04-29T23:19:54.632Z",
+    "headers": [],
+    "params": [
+      {
+        "name": "fields%5Btrip%5D",
+        "value": "CR-A521785-109-MRNewbptSlmRockport",
+        "isPath": false
+      },
+      {
+        "name": "include",
+        "value": "stops",
+        "isPath": false
+      },
+      {
+        "name": "filter%5Bdate%5D",
+        "value": "2022-04-29",
+        "isPath": false
+      },
+      {
+        "name": "filter%5Bdirection_id%5D",
+        "value": "0",
+        "isDisabled": true,
+        "isPath": false
+      },
+      {
+        "name": "filter%5Broute%5D",
+        "value": "CR-Fitchburg",
+        "isDisabled": true,
+        "isPath": false
+      }
+    ],
+    "tests": []
+  },
+  {
+    "_id": "f84ba6df-14d7-4d04-a2c8-59790a6b7cb2",
+    "colId": "history",
+    "containerId": "",
+    "name": "schedules-trip_filter",
+    "url": "https://api-v3.mbta.com/schedules?filter[trip]=CR-A521789-119-MRNewbptSlmRockport",
+    "method": "GET",
+    "sortNum": 0,
+    "created": "2022-04-29T22:17:06.512Z",
+    "modified": "2022-04-29T22:28:49.402Z",
+    "headers": [],
+    "params": [
+      {
+        "name": "filter[trip]",
+        "value": "CR-A521789-119-MRNewbptSlmRockport",
+        "isPath": false
+      }
+    ],
+    "tests": []
+  },
+  {
+    "_id": "2f501f7b-af90-4652-831d-7c8238fe7d03",
+    "colId": "history",
+    "containerId": "",
+    "name": "schedule-route-id",
+    "url": "https://api-v3.mbta.com/schedules?filter[route]=CR-Newburyport&filter[stop_sequence]=first,last&filter[route_type]=2&filter[min_time]=12:00&filter[max_time]=14:00&filter[direction_id]=0&sort=departure_time",
+    "method": "GET",
+    "sortNum": 0,
+    "created": "2022-04-29T22:39:48.513Z",
+    "modified": "2022-04-29T22:49:35.817Z",
+    "headers": [],
+    "params": [
+      {
+        "name": "filter[route]",
+        "value": "CR-Newburyport",
+        "isPath": false
+      },
+      {
+        "name": "filter[stop_sequence]",
+        "value": "first,last",
+        "isPath": false
+      },
+      {
+        "name": "filter[route_type]",
+        "value": "2",
+        "isPath": false
+      },
+      {
+        "name": "filter[min_time]",
+        "value": "12:00",
+        "isPath": false
+      },
+      {
+        "name": "filter[max_time]",
+        "value": "14:00",
+        "isPath": false
+      },
+      {
+        "name": "filter[direction_id]",
+        "value": "0",
+        "isPath": false
+      },
+      {
+        "name": "sort",
+        "value": "departure_time",
+        "isPath": false
+      }
+    ],
+    "tests": []
+  },
+  {
+    "_id": "30e565d7-d1c8-489d-8d8c-61fb9ac221b2",
+    "colId": "history",
+    "containerId": "",
+    "name": "trips-id",
+    "url": "https://api-v3.mbta.com/trips/CR-A522054-163-MRNewbptSlmRockport0?include=stops",
+    "method": "GET",
+    "sortNum": 0,
+    "created": "2022-04-29T23:01:13.591Z",
+    "modified": "2022-04-29T23:06:45.365Z",
+    "headers": [],
+    "params": [
+      {
+        "name": "include",
+        "value": "stops",
+        "isPath": false
+      }
+    ],
+    "tests": []
+  }
+]
