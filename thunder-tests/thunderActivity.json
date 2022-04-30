@@ -109,16 +109,16 @@
     "colId": "history",
     "containerId": "",
     "name": "schedules-times-date-stop",
-    "url": "https://api-v3.mbta.com/schedules?include=stop,route&filter%5Bdate%5D=2022-04-30&filter%5Bdirection_id%5D=0&filter%5Broute_type%5D=2&filter%5Bmin_time%5D=18%3A00&filter%5Bmax_time%5D=19%3A30&filter%5Bstop%5D=place-north&sort=departure_time",
+    "url": "https://api-v3.mbta.com/schedules?include=stop&filter%5Bdate%5D=2022-04-30&filter%5Bdirection_id%5D=0&filter%5Broute_type%5D=2&filter%5Bmin_time%5D=18%3A00&filter%5Bmax_time%5D=19%3A30&filter%5Bstop%5D=place-north&sort=departure_time",
     "method": "GET",
     "sortNum": 0,
     "created": "2022-04-29T21:18:56.932Z",
-    "modified": "2022-04-30T05:08:57.245Z",
+    "modified": "2022-04-30T15:52:52.502Z",
     "headers": [],
     "params": [
       {
         "name": "include",
-        "value": "stop,route",
+        "value": "stop",
         "isPath": false
       },
       {
@@ -239,17 +239,17 @@
     "_id": "2f501f7b-af90-4652-831d-7c8238fe7d03",
     "colId": "history",
     "containerId": "",
-    "name": "schedule-route-id",
-    "url": "https://api-v3.mbta.com/schedules?filter[route]=CR-Newburyport&filter[stop_sequence]=last&filter[route_type]=2&filter[min_time]=12:00&filter[max_time]=14:00&filter[direction_id]=0&sort=departure_time",
+    "name": "schedule-trip-id",
+    "url": "https://api-v3.mbta.com/schedules?filter[trip]=CR-A522036-1107-MRNewbptSlmRockport&filter[stop_sequence]=last&filter[route_type]=2&filter[direction_id]=0&sort=departure_time&filter[date]=2022-04-30&include=stop.attributes.name",
     "method": "GET",
     "sortNum": 0,
     "created": "2022-04-29T22:39:48.513Z",
-    "modified": "2022-04-30T04:49:51.129Z",
+    "modified": "2022-04-30T15:30:24.441Z",
     "headers": [],
     "params": [
       {
-        "name": "filter[route]",
-        "value": "CR-Newburyport",
+        "name": "filter[trip]",
+        "value": "CR-A522036-1107-MRNewbptSlmRockport",
         "isPath": false
       },
       {
@@ -265,11 +265,13 @@
       {
         "name": "filter[min_time]",
         "value": "12:00",
+        "isDisabled": true,
         "isPath": false
       },
       {
         "name": "filter[max_time]",
         "value": "14:00",
+        "isDisabled": true,
         "isPath": false
       },
       {
@@ -280,6 +282,16 @@
       {
         "name": "sort",
         "value": "departure_time",
+        "isPath": false
+      },
+      {
+        "name": "filter[date]",
+        "value": "2022-04-30",
+        "isPath": false
+      },
+      {
+        "name": "include",
+        "value": "stop.attributes.name",
         "isPath": false
       }
     ],
@@ -300,6 +312,81 @@
       {
         "name": "include",
         "value": "stops",
+        "isPath": false
+      }
+    ],
+    "tests": []
+  },
+  {
+    "_id": "35d78ddb-f7e4-485f-accc-6d52d4d6ed39",
+    "colId": "history",
+    "containerId": "",
+    "name": "include-nested",
+    "url": "https://api-v3.mbta.com/routes/Red?include=route_patterns.representative_trip.shape",
+    "method": "GET",
+    "sortNum": 0,
+    "created": "2022-04-30T14:30:59.666Z",
+    "modified": "2022-04-30T14:31:00.111Z",
+    "headers": [],
+    "params": [
+      {
+        "name": "include",
+        "value": "route_patterns.representative_trip.shape",
+        "isPath": false
+      }
+    ],
+    "tests": []
+  },
+  {
+    "_id": "a84ba7aa-21a5-47c5-a1c3-0147b5e99c1b",
+    "colId": "history",
+    "containerId": "",
+    "name": "schedule-departure-time",
+    "url": "https://api-v3.mbta.com/schedules?sort=departure_time&include=prediction.attributes.status&filter%5Bdate%5D=2022-04-30&filter%5Bdirection_id%5D=0&filter%5Broute_type%5D=2&filter%5Bmin_time%5D=11%3A00&filter%5Bmax_time%5D=12%3A39&filter%5Bstop%5D=place-north",
+    "method": "GET",
+    "sortNum": 0,
+    "created": "2022-04-30T15:03:57.312Z",
+    "modified": "2022-04-30T15:03:57.679Z",
+    "headers": [],
+    "params": [
+      {
+        "name": "sort",
+        "value": "departure_time",
+        "isPath": false
+      },
+      {
+        "name": "include",
+        "value": "prediction.attributes.status",
+        "isPath": false
+      },
+      {
+        "name": "filter%5Bdate%5D",
+        "value": "2022-04-30",
+        "isPath": false
+      },
+      {
+        "name": "filter%5Bdirection_id%5D",
+        "value": "0",
+        "isPath": false
+      },
+      {
+        "name": "filter%5Broute_type%5D",
+        "value": "2",
+        "isPath": false
+      },
+      {
+        "name": "filter%5Bmin_time%5D",
+        "value": "11%3A00",
+        "isPath": false
+      },
+      {
+        "name": "filter%5Bmax_time%5D",
+        "value": "12%3A39",
+        "isPath": false
+      },
+      {
+        "name": "filter%5Bstop%5D",
+        "value": "place-north",
         "isPath": false
       }
     ],

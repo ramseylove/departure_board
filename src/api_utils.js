@@ -20,6 +20,40 @@ export const getSchedules = async function (date, startTime, endTime) {
   const response = await fetch(builtUrl);
 
   const data = await response.json();
-  //   console.log("schedules: ", data);
+
   return data;
 };
+
+export const getSchedule = async function (tripIdArray) {
+  const today = formatDate(new Date());
+  const sort = "sort=departure_time";
+  const lastStop = "filter%5Bstop_sequence%5D=last&filter%5Broute_type%5D=2";
+  const date = `filter%5Bdate%5D=${today}`;
+  const trips = `filter%5Btrip%5D=${tripIdArray.join(",")}`;
+
+  const builtUrl = `${baseUrl}schedules?${sort}&${date}&${trips}&${lastStop}`;
+
+  let trip = [];
+  try {
+    const response = await fetch(builtUrl);
+    trip = await response.json();
+  } catch (error) {
+    console.error(error);
+  }
+
+  return trip.data;
+};
+
+function formatDate(date) {
+  const day = padZero(date.getDate());
+  const month = padZero(date.getMonth() + 1);
+  const year = date.getFullYear();
+
+  function padZero(num) {
+    let s_num = num.toString();
+    if (s_num.length === 1) s_num = s_num.padStart(2, "0");
+    return s_num;
+  }
+
+  return `${year}-${month}-${day}`;
+}

@@ -1,18 +1,19 @@
 import { useEffect, useState } from "react";
-import { getSchedules } from "../api_utils";
+import { getSchedules, getSchedule } from "../api_utils";
 
 import "./App.css";
 
 function App() {
-  const [schedules, setSchedules] = useState([]);
+  const [schedules, setSchedules] = useState();
 
   useEffect(() => {
     getSchedules("2022-04-29", "18%3A00", "18%3A59").then((data) =>
       setSchedules(data)
     );
+    getSchedule(["CR-A522039-1113-MRNewbptSlmRockport"]);
   }, []);
 
-  if (!schedules.data.length) {
+  if (!schedules) {
     return <p>No Schedules</p>;
   }
 
