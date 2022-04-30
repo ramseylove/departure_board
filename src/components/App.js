@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getSchedules, getSchedule } from "../api_utils";
+import { getSchedules, getSchedule, getStatus } from "../api_utils";
 
 import "./App.css";
 
@@ -10,7 +10,8 @@ function App() {
     getSchedules("2022-04-29", "18%3A00", "18%3A59").then((data) =>
       setSchedules(data)
     );
-    getSchedule(["CR-A522039-1113-MRNewbptSlmRockport"]);
+    getSchedule(["CR-A522039-1113-MRNewbptSlmRockport", "CR-503093-1313"]);
+    getStatus("CR-503115-1207");
   }, []);
 
   if (!schedules) {

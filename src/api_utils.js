@@ -31,11 +31,11 @@ export const getSchedule = async function (tripIdArray) {
   const date = `filter%5Bdate%5D=${today}`;
   const trips = `filter%5Btrip%5D=${tripIdArray.join(",")}`;
 
-  const builtUrl = `${baseUrl}schedules?${sort}&${date}&${trips}&${lastStop}`;
-
   let trip = [];
   try {
-    const response = await fetch(builtUrl);
+    const response = await fetch(
+      `${baseUrl}schedules?${sort}&${date}&${trips}&${lastStop}`
+    );
     trip = await response.json();
   } catch (error) {
     console.error(error);
@@ -57,3 +57,21 @@ function formatDate(date) {
 
   return `${year}-${month}-${day}`;
 }
+
+export const getStatus = async function (tripId) {
+  const stop = "filter%5Bstop%5D=place-north";
+  const fields = "fields%5Bprediction%5D=status";
+  const trip = `filter%5Btrip%5D=${tripId}`;
+  let statusResponse = [];
+  try {
+    const response = await fetch(
+      `${baseUrl}predictions?${fields}&${trip}&${stop}`
+    );
+
+    statusResponse = await response.json();
+  } catch (error) {
+    console.log(error);
+  }
+  console.log(statusResponse);
+  return statusResponse;
+};
