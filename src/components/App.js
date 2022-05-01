@@ -20,16 +20,16 @@ function App() {
     <div className="App">
       <Header />
       <div className="board">
-        {schedules ? (
-          <table>
-            <caption>Departure times for North Station</caption>
-            <thead>
-              <tr>
-                <th>Time</th>
-                <th align="left">Destination</th>
-                <th>Status</th>
-              </tr>
-            </thead>
+        <table>
+          <caption>Departure times for North Station</caption>
+          <thead>
+            <tr>
+              <th>Time</th>
+              <th align="left">Destination</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          {schedules ? (
             <tbody>
               {schedules.map((destination) => (
                 <Destination
@@ -41,12 +41,16 @@ function App() {
                 />
               ))}
             </tbody>
-          </table>
-        ) : (
-          <tr>
-            <td>Loading Routes</td>
-          </tr>
-        )}
+          ) : (
+            <tbody>
+              <tr>
+                <td></td>
+                <td>Loading Routes</td>
+                <td></td>
+              </tr>
+            </tbody>
+          )}
+        </table>
       </div>
     </div>
   );
