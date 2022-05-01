@@ -11,8 +11,6 @@ export const getSchedules = async function (date, startTime, endTime) {
   };
 
   const filterConstruct = Object.values(filters).join("&");
-
-  const include = "include=stop,route";
   const sort = "sort=departure_time";
 
   const firstUrl = `${baseUrl}schedules?${sort}&${filterConstruct}`;
@@ -22,11 +20,16 @@ export const getSchedules = async function (date, startTime, endTime) {
   try {
     const response = await fetch(firstUrl);
     let data = await response.json();
+    // build array for schedule requests
     data.data.forEach((ele) => tripIds.push(ele.relationships.trip.data.id));
+
     for (const schedule of data.data) {
+      //format time to HH:MM
+      const departureTime = formatTime(schedule.attributes.departure_time);
+
       schedules.push({
         id: schedule.id,
-        departureTime: schedule.attributes.departure_time,
+        departureTime: departureTime,
         tripId: schedule.relationships.trip.data.id,
       });
     }
@@ -43,8 +46,6 @@ export const getSchedules = async function (date, startTime, endTime) {
   } catch (error) {
     console.log(error);
   }
-
-  return;
 };
 
 export async function getSchedule(tripIdArray) {
@@ -72,15 +73,18 @@ export async function getSchedule(tripIdArray) {
       const includes = includedData.find(
         (ele) => ele.id === schedule.relationships.stop.data.id
       );
+      const arrivalTime = formatTime(schedule.attributes.arrival_time);
+
       formattedData.push({
         tripId: schedule.relationships.trip.data.id,
         scheduleId: schedule.id,
         stopId: includes.id,
         name: includes.attributes.name,
-        arrivalTime: schedule.attributes.arrival_time,
+        arrivalTime: arrivalTime,
       });
     }
-
+    console.log("SD: ", scheduleData);
+    console.log("ID: ", includedData);
     return formattedData;
   } catch (error) {
     console.error(error);
@@ -99,6 +103,14 @@ function formatDate(date) {
   }
 
   return `${year}-${month}-${day}`;
+}
+
+function formatTime(dateString) {
+  const date = new Date(dateString);
+  const hour = date.getUTCHours();
+  const min = date.getUTCMinutes();
+
+  return `${hour}:${min}`;
 }
 
 export const getStatus = async function (tripId) {
