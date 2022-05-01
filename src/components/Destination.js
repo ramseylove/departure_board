@@ -1,11 +1,11 @@
 import React from "react";
 
-function Destination({ stopId, name, departureTime }) {
+function Destination({ tripId, name, departureTime, status }) {
   return (
-    <tr key={stopId}>
-      <td>{name}</td>
+    <tr>
       <td>{departureTime}</td>
-      <td>On Time</td>
+      <td>{name}</td>
+      <td>{status ? status : "Unknown"}</td>
     </tr>
   );
 }

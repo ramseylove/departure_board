@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import { getSchedules } from "../api_utils";
+import { getSchedules, getStatus } from "../api_utils";
+import { formatRange } from "../utils";
 
 import Destination from "./Destination";
 
@@ -7,11 +8,12 @@ import "./App.css";
 
 function App() {
   const [schedules, setSchedules] = useState();
+  // const [currentTime, setCurrentTime] = useState();
 
   useEffect(() => {
-    getSchedules("2022-04-30", "18%3A00", "18%3A59").then((data) =>
-      setSchedules(data)
-    );
+    const [date, startTime, endTime] = formatRange(new Date());
+
+    getSchedules(date, startTime, endTime).then((data) => setSchedules(data));
   }, []);
 
   if (!schedules) {
@@ -20,27 +22,31 @@ function App() {
 
   return (
     <div className="App">
-      <h1>North Station Departures</h1>
-      <div class="board">
-        <table>
-          <caption>Departure times from North Station</caption>
-          <thead>
-            <tr>
-              <th>Time</th>
-              <th>Destination</th>
-              <th>Status</th>
-            </tr>
-          </thead>
-          <tbody>
-            {schedules.map((destination) => (
-              <Destination
-                id={destination.stopId}
-                name={destination.name}
-                departureTime={destination.departureTime}
-              />
-            ))}
-          </tbody>
-        </table>
+      <h1>North Station</h1>
+      <div className="board">
+        {schedules && (
+          <table>
+            <caption>Departure times for North Station</caption>
+            <thead>
+              <tr>
+                <th>Time</th>
+                <th>Destination</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              {schedules.map((destination) => (
+                <Destination
+                  key={destination.tripId}
+                  tripId={destination.tripId}
+                  name={destination.name}
+                  departureTime={destination.departureTime}
+                  status={destination.status}
+                />
+              ))}
+            </tbody>
+          </table>
+        )}
       </div>
     </div>
   );
