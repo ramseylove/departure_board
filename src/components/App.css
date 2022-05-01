@@ -1,21 +1,63 @@
 .App {
   text-align: center;
-  color: #e5ea00;
+  font-variant: small-caps;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 2.5rem;
+  font-weight: 500;
+  color: #fcf67d;
+  margin: 1.3rem auto;
+  letter-spacing: 3px;
+  width: 90%;
+}
+
+.title {
+  font-size: 1.4rem;
+  color: rgb(179, 179, 179);
+}
+.time {
+  letter-spacing: 4px;
+  font-size: 3.2rem;
 }
 
 .board {
-  font: small-caps 2.7rem;
+  font-size: 1.8rem;
+  font-variant: small-caps;
   letter-spacing: 3px;
   font-weight: 400;
   font-stretch: expanded;
+  display: flex;
+  justify-content: center;
+}
+
+caption {
+  font-size: 2.2rem;
+  margin-bottom: 1.5rem;
 }
 
 table {
   table-layout: fixed;
-  width: 100%;
+  width: 90%;
   border-collapse: collapse;
+  border: 1px solid black;
+}
+tbody tr:nth-child(odd) {
+  background-color: #1c2f3c;
 }
 
-tr {
-  padding: 2.2rem;
+td,
+th {
+  padding: 0.8rem;
+}
+th {
+  color: rgb(179, 179, 179);
+}
+
+td {
+  font-size: 2rem;
+  color: #fcf67d;
 }

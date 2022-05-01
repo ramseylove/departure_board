@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
-import { getSchedules, getStatus } from "../api_utils";
+import { getSchedules } from "../api_utils";
 import { formatRange } from "../utils";
 
 import Destination from "./Destination";
 
 import "./App.css";
+import Header from "./Header";
 
 function App() {
   const [schedules, setSchedules] = useState();
@@ -15,21 +16,17 @@ function App() {
     getSchedules(date, startTime, endTime).then((data) => setSchedules(data));
   }, []);
 
-  if (!schedules) {
-    return <p>No Schedules</p>;
-  }
-
   return (
     <div className="App">
-      <h1>North Station</h1>
+      <Header />
       <div className="board">
-        {schedules && (
+        {schedules ? (
           <table>
             <caption>Departure times for North Station</caption>
             <thead>
               <tr>
                 <th>Time</th>
-                <th>Destination</th>
+                <th align="left">Destination</th>
                 <th>Status</th>
               </tr>
             </thead>
@@ -45,6 +42,10 @@ function App() {
               ))}
             </tbody>
           </table>
+        ) : (
+          <tr>
+            <td>Loading Routes</td>
+          </tr>
         )}
       </div>
     </div>
