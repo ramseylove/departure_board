@@ -1,8 +1,8 @@
 import { formatTwelveHour } from "./utils";
+
 const baseUrl = "https://api-v3.mbta.com/";
 
 export async function getSchedules(date, startTime, endTime) {
-  console.log(startTime, endTime);
   const filters = {
     directionTypeStop:
       "filter%5Bdirection_id%5D=0&filter%5Broute_type%5D=2&filter%5Bstop%5D=place-north",
@@ -23,7 +23,7 @@ export async function getSchedules(date, startTime, endTime) {
     const response = await fetch(firstUrl);
     let data = await response.json();
     if (data) {
-      // build array for schedule requests
+      // build array for individual schedule requests
       tripIds = data.data.map((ele) => ele.relationships.trip.data.id);
       // get each schedule and status
       const scheduleData = await getSchedule(date, tripIds);
@@ -53,7 +53,6 @@ export async function getSchedules(date, startTime, endTime) {
         });
       }
 
-      console.log(schedules);
       return schedules;
     }
   } catch (error) {
@@ -62,8 +61,6 @@ export async function getSchedules(date, startTime, endTime) {
 }
 
 export async function getSchedule(inputDate, tripIdArray) {
-  // const today = formatDate(new Date());
-
   const sort = "sort=departure_time";
   const routeType = "filter%5Broute_type%5D=2";
   const lastStop = "filter%5Bstop_sequence%5D=last";
@@ -91,7 +88,6 @@ export async function getSchedule(inputDate, tripIdArray) {
           arrivalTime: arrivalTime,
         };
       });
-      console.log("formattedData: ", formattedData);
       return formattedData;
     }
   } catch (error) {
@@ -130,10 +126,6 @@ export const getAllStatus = async function (tripIdArray) {
     );
 
     let statusResponse = await response.json();
-    // if (statusResponse.data[0]) {
-    //   return statusResponse?.data[0].attributes.status;
-    // }
-    console.log(statusResponse);
     return statusResponse;
   } catch (error) {
     console.log(error);

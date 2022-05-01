@@ -21,7 +21,7 @@ export function formatTwentyFourHour(date) {
   const dateTZ = new Date(
     date.toLocaleString("en-US", { timeZone: "America/New_York" })
   );
-  console.log(dateTZ);
+
   const hour = padZero(dateTZ.getHours());
   const min = padZero(dateTZ.getMinutes());
 
