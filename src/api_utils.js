@@ -7,42 +7,85 @@ export const getSchedules = async function (date, startTime, endTime) {
     date: `filter%5Bdate%5D=${date}`,
     startTime: `filter%5Bmin_time%5D=${startTime}`,
     endTime: `filter%5Bmax_time%5D=${endTime}`,
+    stops: "filter%5Bstop_sequence%5D=first%2C%20last",
   };
 
   const filterConstruct = Object.values(filters).join("&");
 
   const include = "include=stop,route";
   const sort = "sort=departure_time";
-  const stops = "filter%5Bstop_sequence%5D=first%2C%20last";
 
-  const builtUrl = `${baseUrl}schedules?${sort}&${include}&${filterConstruct}&${stops}`;
+  const firstUrl = `${baseUrl}schedules?${sort}&${filterConstruct}`;
 
-  const response = await fetch(builtUrl);
+  let tripIds = [];
+  let schedules = [];
+  try {
+    const response = await fetch(firstUrl);
+    let data = await response.json();
+    data.data.forEach((ele) => tripIds.push(ele.relationships.trip.data.id));
+    for (const schedule of data.data) {
+      schedules.push({
+        id: schedule.id,
+        departureTime: schedule.attributes.departure_time,
+        tripId: schedule.relationships.trip.data.id,
+      });
+    }
 
-  const data = await response.json();
+    const scheduleData = await getSchedule(tripIds);
+    schedules.forEach((ele, idx) => {
+      const foundEle = scheduleData.find(
+        (element) => element.tripId === ele.tripId
+      );
+      schedules[idx] = { ...ele, ...foundEle };
+    });
+    console.log(schedules);
+    return schedules;
+  } catch (error) {
+    console.log(error);
+  }
 
-  return data;
+  return;
 };
 
-export const getSchedule = async function (tripIdArray) {
+export async function getSchedule(tripIdArray) {
   const today = formatDate(new Date());
+
   const sort = "sort=departure_time";
-  const lastStop = "filter%5Bstop_sequence%5D=last&filter%5Broute_type%5D=2";
+  const routeType = "filter%5Broute_type%5D=2";
+  const lastStop = "filter%5Bstop_sequence%5D=last";
   const date = `filter%5Bdate%5D=${today}`;
   const trips = `filter%5Btrip%5D=${tripIdArray.join(",")}`;
+  const include = "include=stop.attributes.name";
 
-  let trip = [];
+  let scheduleData = [];
+  let includedData = [];
+  let formattedData = [];
   try {
     const response = await fetch(
-      `${baseUrl}schedules?${sort}&${date}&${trips}&${lastStop}`
+      `${baseUrl}schedules?${sort}&${include}&${date}&${routeType}&${trips}&${lastStop}`
     );
-    trip = await response.json();
+    let data = await response.json();
+    scheduleData = [...data.data];
+    includedData = [...data.included];
+
+    for (const schedule of scheduleData) {
+      const includes = includedData.find(
+        (ele) => ele.id === schedule.relationships.stop.data.id
+      );
+      formattedData.push({
+        tripId: schedule.relationships.trip.data.id,
+        scheduleId: schedule.id,
+        stopId: includes.id,
+        name: includes.attributes.name,
+        arrivalTime: schedule.attributes.arrival_time,
+      });
+    }
+
+    return formattedData;
   } catch (error) {
     console.error(error);
   }
-
-  return trip.data;
-};
+}
 
 function formatDate(date) {
   const day = padZero(date.getDate());
@@ -72,6 +115,6 @@ export const getStatus = async function (tripId) {
   } catch (error) {
     console.log(error);
   }
-  console.log(statusResponse);
+
   return statusResponse;
 };
