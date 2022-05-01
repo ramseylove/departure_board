@@ -8,7 +8,6 @@ import "./App.css";
 
 function App() {
   const [schedules, setSchedules] = useState();
-  // const [currentTime, setCurrentTime] = useState();
 
   useEffect(() => {
     const [date, startTime, endTime] = formatRange(new Date());
