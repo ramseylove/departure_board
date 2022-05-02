@@ -9,7 +9,7 @@ export function formatTwelveHour(date) {
 
   hours = hours % 12;
   hours = hours ? hours : 12; // '0' = '12' noon or midnight
-  minutes = minutes < 10 ? "0" + minutes : minutes;
+  minutes = padZero(minutes);
   const strTime = `${hours}:${minutes} ${ampm}`;
   return strTime;
 }

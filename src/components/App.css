@@ -70,15 +70,18 @@ td {
   .time {
     font-size: 1.5rem;
   }
+  .board {
+    letter-spacing: 1px;
+  }
   caption {
     font-size: 1.7rem;
   }
   table {
-    width: 95%;
+    width: 99%;
   }
   td,
   th {
-    font-size: 1rem;
+    font-size: 0.8rem;
     padding: 1rem 0.5rem;
   }
 }
